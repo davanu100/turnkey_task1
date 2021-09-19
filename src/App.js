@@ -107,6 +107,23 @@ class App extends Component {
       })
       error = true;
     }
+    if (!error) {
+      const newData = {
+        name: this.state.name.value,
+        contact: this.state.contact.value,
+        email: this.state.email.value,
+        techStack: this.state.techStack.value
+      };
+      try {
+        var data = [...JSON.parse(localStorage.getItem("formData"))];
+      }
+      catch (err) {
+        var data = [];
+      }
+      data.push(newData);
+      localStorage.setItem("formData", JSON.stringify(data));
+
+    }
   }
   render() {
 
